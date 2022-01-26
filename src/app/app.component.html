@@ -1,22 +1,26 @@
 <main class="d-flex text-light">
   <div class="bg-success" style="width:50vw; height:100vh;">
-    <div>
-      <h1 class="m-2">Name:</h1>
-      <h1 class="m-2">Email:</h1>
-      <h1 class="m-2">Gender:</h1>
-      <h1 class="m-2">Id:</h1>
-    </div>
     <div *ngFor="let element of data" class="d-inline-flex">
-      <button class="m-2" (click)="onClick(element)">{{ element.name }}</button>
+      <div class="border">
+        <button class="m-2 btn btn-info" (click)="onClick(element)" style="width:5vw;">{{ element.ProductCode }}</button>
+      </div>
     </div>
   </div>
   <div *ngIf="visible" class="bg-danger" style="width:50vw; height:100vh;">
-    <div>
-      <h1 class="m-2">{{name}}</h1>
-      <h1 class="m-2">{{email}}</h1>
-      <h1 class="m-2">{{gender}}</h1>
-      <h1 class="m-2">{{id}}</h1>
+    <div class="d-flex">
+      <div style="width:25vw; height:100vh;">
+        <div *ngFor="let key of elemKeys" class="border h4" style="height:4vw;">
+          {{ key }}
+        </div>
+      </div>
+      <div style="width:25vw; height:100vh;" class="d-flex flex-column justify-content-between">
+        <div>
+          <div *ngFor="let value of elemValues" class="border h4" style="height:4vw;">
+            {{ value }}
+          </div>
+        </div>
+        <button class="btn btn-warning m-5" (click)="onCloseClick()">CLOSE</button>
+      </div>
     </div>
-    <button class="bg-warning m-2" (click)="onCloseClick()">CLOSE</button>
   </div>
 </main>

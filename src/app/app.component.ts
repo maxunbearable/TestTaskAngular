@@ -10,11 +10,9 @@ export class AppComponent implements OnInit{
 
   title = 'TestTaskAngular';
   data: any;
-  name!: string;
-  email!: string;
-  id!: string;
-  gender!: string;
   visible:boolean = false;
+  elemKeys!: any[];
+  elemValues!: any[];
 
   constructor(protected service: Service) {
   }
@@ -25,18 +23,8 @@ export class AppComponent implements OnInit{
 
   onClick(element:any) {
     this.visible = true;
-    this.name = element.name;
-    if (!element.email) {
-      this.email = 'its unknown';
-    } else {
-      this.email = element.email;
-    }
-    this.id = element.id;
-    if (!element.gender) {
-      this.gender = 'its unknown';
-    } else {
-      this.gender = element.gender;
-    }
+    this.elemKeys = Object.keys(element);
+    this.elemValues = Object.values(element).map(el => el !== null? el : 'it\'s unknown');
   }
 
   onCloseClick() {
